@@ -28,11 +28,16 @@ function setup() {
 function draw() {
     background(0);
     stroke(255);
-    horzCircles.map((c, i) => {    
-        c.draw();
-    });
-
-    vertCircles.map((c, i) => {
-        c.draw();
-    });
+    horzCircles.map(c => c.draw());
+    vertCircles.map(c => c.draw());
+    
+    for(let i = 0; i < cols; i++) {
+        let x = horzCircles[i].point.x;
+        strokeWeight(8);
+        for(let j = 0; j < rows; j++) {
+            let y = vertCircles[j].point.y;
+            point(x, y);
+        }
+        strokeWeight(1);
+    }
 }
